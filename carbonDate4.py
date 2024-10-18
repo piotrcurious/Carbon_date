@@ -6,6 +6,7 @@ import numpy as np
 
 # Constants
 TARGET_YEAR = 2100  # Paris Agreement target year
+PARIS_AGREEMENT = 2016 # Paris agreement base year
 TARGET_TEMP = 1.5  # The 1.5°C target anomaly
 
 # Function to fetch global temperature anomaly data from NASA GISTEMP
@@ -106,7 +107,7 @@ def adjust_date_based_on_anomaly(input_date=None):
     else:
         # Proportional shift in years relative to the 1.5°C target
         proportion = current_anomaly / TARGET_TEMP
-        adjusted_year = 1880 + proportion * (TARGET_YEAR - 1880)  # 1880 is the baseline year in the dataset
+        adjusted_year = PARIS_AGREEMENT + proportion * (TARGET_YEAR - PARIS_AGREEMENT)  # shift date starting from paris agreement
     
     # Calculate the year offset
     year_offset = adjusted_year - current_year
