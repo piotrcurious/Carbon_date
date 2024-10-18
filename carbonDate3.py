@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from io import StringIO
 
 # Constants
+PARIS_AGREEMENT = 2016
 TARGET_YEAR = 2050
 TARGET_TEMP = 1.5  # The 1.5°C target anomaly
 
@@ -74,7 +75,7 @@ def adjust_date_based_on_anomaly(input_date=None):
     else:
         # Proportional shift in years relative to the 1.5°C target
         proportion = current_anomaly / TARGET_TEMP
-        adjusted_year = 1880 + proportion * (TARGET_YEAR - 1880)  # 1880 is the baseline year in the dataset
+        adjusted_year = PARIS_AGREEMENT + proportion * (TARGET_YEAR - PARIS_AGREEMENT)  # 1880 is the baseline year in the dataset
     
     # Calculate the year offset
     year_offset = adjusted_year - current_year
